@@ -12,9 +12,17 @@ import {Joke} from './domain/joke';
         {{data.punchline}}
       </span>
     </h4>
-    
-    <a class="btn btn-warning"
-      (click)="data.toggle()">Tell Me</a>
+    <div class="container" style="border:1px solid black;">
+      <div class="row">
+        <div class="col-md-7" style="border:1px solid black;">
+          <a class="btn btn-warning"
+            (click)="data.toggle()">Tell Me</a>
+        </div>
+        <div class="col-md-5" style="border:1px solid black; text-align: right;">
+          <a class="btn btn-danger">Remove</a>
+        </div>
+      </div>
+    </div>
   </div>
   `,
 })

@@ -9,22 +9,22 @@ import {Joke} from './domain/joke';
     <h4 class="card-title">Create Joke</h4>
     <div class="form-group">
       <input type="text" class="form-control" 
-        placeholder="Enter the setup">
+        placeholder="Enter the setup" #setup>
     </div>
     <div class="form-group">
       <input type="text" class="form-control" 
-        placeholder="Enter the punchline">
+        placeholder="Enter the punchline" #punchline>
     </div>
     <button type="button" 
       class="btn btn-primary"
-      (click)="createJoke()">Create</button>
+      (click)="createJoke(setup.value, punchline.value)">Create</button>
   </div>
   `
 })
 export class JokeFormComponent{
   @Output() jokeCreated = new EventEmitter<Joke>();
 
-  createJoke() {
-    this.jokeCreated.emit(new Joke('A setup', 'A punchline'));
+  createJoke(setup: string, punchline: string) {
+    this.jokeCreated.emit(new Joke(setup, punchline));
   }
 }
