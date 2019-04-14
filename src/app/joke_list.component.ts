@@ -7,7 +7,9 @@ import {Joke} from './domain/joke';
   template: `
   <joke-form 
     (jokeCreated)="addJoke($event)"></joke-form>
-  <joke *ngFor="let j of jokes" [joke]="j"></joke>
+  <joke *ngFor="let j of jokes" [joke]="j" (jokeRemoved)="removeJoke($event)">
+    <h1>{{j.punchline}}</h1>
+  </joke>
   `
 })
 export class JokeListComponent {
@@ -26,5 +28,9 @@ export class JokeListComponent {
 
   addJoke(joke) {
     this.jokes.unshift(joke);
+  }
+
+  removeJoke(joke) {
+    this.jokes = this.jokes.filter(item => item.setup !== joke.setup);
   }
 }

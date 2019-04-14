@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
-import {Joke} from './domain/joke';
+import { Joke } from './domain/joke';
 
 @Component({
   selector: 'joke',
@@ -9,7 +9,7 @@ import {Joke} from './domain/joke';
     <h4 class="card-title">
       {{data.setup}}
       <span class="card-text" [hidden]="data.hide" style="font-size:12pt;">
-        {{data.punchline}}
+        <ng-content></ng-content>
       </span>
     </h4>
     <div class="container" style="border:1px solid black;">
@@ -19,7 +19,7 @@ import {Joke} from './domain/joke';
             (click)="data.toggle()">Tell Me</a>
         </div>
         <div class="col-md-5" style="border:1px solid black; text-align: right;">
-          <a class="btn btn-danger">Remove</a>
+          <a class="btn btn-danger" (click)="removeJoke()">Remove</a>
         </div>
       </div>
     </div>
@@ -28,4 +28,10 @@ import {Joke} from './domain/joke';
 })
 export class JokeComponent {
   @Input('joke') data: Joke;
+
+  @Output() jokeRemoved = new EventEmitter<Joke>();
+
+  removeJoke() {
+    this.jokeRemoved.emit(new Joke(this.data.setup, this.data.punchline));
+  }
 }
