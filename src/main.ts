@@ -7,9 +7,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app/app.component';
-import { JokeComponent } from './app/joke.component';
-import { JokeListComponent } from './app/joke_list.component';
-import { JokeFormComponent } from './app/joke-form.component';
+import { JokeComponent } from './app/joke-component';
+import { JokeListComponent } from './app/joke-list-component';
+import { JokeFormComponent } from './app/joke-form-component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule],

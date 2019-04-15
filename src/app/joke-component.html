@@ -1,0 +1,22 @@
+<div class="card card-block">
+	<h4 class="card-title">
+		{{data.setup}}
+		<span class="card-text" 
+      *ngIf="data.hide" 
+      style="font-size:12pt;">
+        <ng-content></ng-content>
+      </span>
+    </h4>
+    <!-- Buttons -->
+    <div class="container" style="border:0px solid black;">
+      <div class="row">
+        <div class="col-md-7" style="border:0px solid black;">
+          <a class="btn btn-warning"
+            (click)="data.toggle()">Tell Me</a>
+        </div>
+        <div class="col-md-5" style="border:0px solid black; text-align: right;">
+          <a class="btn btn-danger" (click)="removeJoke()">Remove</a>
+        </div>
+      </div>
+    </div>
+  </div>
